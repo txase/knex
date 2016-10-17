@@ -220,7 +220,7 @@ assign(Client.prototype, {
   acquireConnection() {
     return new Promise((resolver, rejecter) => {
       if (!this.pool) {
-        return rejecter(new Error('Unable to acquire a connection'))
+        this.initializePool(this.config)
       }
       let wasRejected = false
       const t = setTimeout(() => {
